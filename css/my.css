@@ -2,7 +2,7 @@ body {
     background-color: #2a2a2a;
 }
 
-#reset {
+#reset, #link {
     border: solid 1px gray;
     background-color: #2a2a2a;
     color: gray;
