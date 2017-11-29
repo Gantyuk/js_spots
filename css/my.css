@@ -11,17 +11,21 @@ body {
 
 .transparent {
     color: transparent !important;
+    border: solid 0px gray !important;
+    padding : 0px;
+    margin: 15px !important;
+    width: 70%;
+    padding-bottom: 2px!important;
+
 }
 
 div .col-xs-3 {
-    text-align: center;
     font-family: Geneva, Arial, Helvetica, sans-serif;
     vertical-align: middle;
 }
 
 #box div .col-xs-3 {
     border: solid 1px gray;
-    text-align: center;
     font-size: 40px;
     color: gray;
 }
@@ -37,4 +41,23 @@ div .col-xs-3 {
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
+}
+.cv {
+    padding : 0px;
+    margin: 10px !important;
+    width: 70%;}
+.container {
+    padding-left: 3%;
+    padding-right: 3%;
+    text-align: center;
+}
+.row{
+    text-align: center;
+}
+.pad{
+    width: 70px;
+    padding: 0px;
+}
+.margin{
+    margin-top: 8%;
 }

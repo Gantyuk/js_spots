@@ -52,12 +52,14 @@ function newGame() {
     for (i = 0; i < 4; ++i) {
         var row = $("<div class='row'></div>");
         for (j = 0; j < 4; ++j) {
-            var cell = $("<div class='col-xs-3 drag droppable'id = \"" + i + "_" + j + "\"></div>");
+            var cell = $("<div class='col-xs-3 drag droppable cv'id = \"" + i + "_" + j + "\"></div>");
             cell.text(arr[i][j]);
             if(arr[i][j]==0){
                 cell.addClass("transparent");
             }
-            row.append(cell);
+            var div1 = $("<div class='col-xs-3 pad' ></div>");
+            div1.append(cell);
+            row.append(div1);
         }
         div.append(row);
     }
@@ -65,7 +67,7 @@ function newGame() {
         box.children(".container").remove();
     box.append(div);
     $(".drag").draggable({
-        helper: "clone",
+        //helper: "clone",
         revert: true,
         containment: ".container",
         scroll: false
@@ -73,7 +75,10 @@ function newGame() {
     //$(".droppable").draggable({ disabled: true });
     $(".droppable").droppable({
         drop: function (event, ui) {
+
             var clone = ui.draggable.clone();
+
+
             var i = parseInt(clone.attr('id').charAt(0)),
                 j = parseInt(clone.attr('id').charAt(2)),
                 i_this = parseInt($(this).attr('id').charAt(0)),
@@ -83,6 +88,7 @@ function newGame() {
                 $("#" + clone.attr('id')).text("0").draggable('disable').droppable("enable").addClass("transparent");
                 ifWin();
             }
+            //ui.revert(false);
         }
     });
     for (i = 0; i < 4; ++i) {
