@@ -26,7 +26,7 @@ div .col-xs-3 {
 
 #box div .col-xs-3 {
     border: solid 1px gray;
-    font-size: 40px;
+    font-size:40px;
     color: gray;
 }
 
@@ -59,5 +59,5 @@ div .col-xs-3 {
     padding: 0px;
 }
 .margin{
-    margin-top: 8%;
+    margin-top: 10px;
 }

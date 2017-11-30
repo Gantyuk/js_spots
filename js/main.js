@@ -54,7 +54,7 @@ function newGame() {
         for (j = 0; j < 4; ++j) {
             var cell = $("<div class='col-xs-3 drag droppable cv'id = \"" + i + "_" + j + "\"></div>");
             cell.text(arr[i][j]);
-            if(arr[i][j]==0){
+            if (arr[i][j] == 0) {
                 cell.addClass("transparent");
             }
             var div1 = $("<div class='col-xs-3 pad' ></div>");
@@ -74,23 +74,48 @@ function newGame() {
     });
     //$(".droppable").draggable({ disabled: true });
     $(".droppable").droppable({
-        drop: function (event, ui) {
+            drop: function (event, ui) {
+                var clone = ui.draggable.clone();
+                console.log(ui.position);
 
-            var clone = ui.draggable.clone();
-
-
-            var i = parseInt(clone.attr('id').charAt(0)),
-                j = parseInt(clone.attr('id').charAt(2)),
-                i_this = parseInt($(this).attr('id').charAt(0)),
-                j_this = parseInt($(this).attr('id').charAt(2));
-            if ((i == i_this && (j == j_this - 1 || j == j_this + 1)) || (j == j_this && (i == i_this - 1 || i == i_this + 1))) {
-                $(this).text(clone.text()).draggable('enable').droppable("disable").removeClass("transparent");
-                $("#" + clone.attr('id')).text("0").draggable('disable').droppable("enable").addClass("transparent");
-                ifWin();
+                var i = parseInt(clone.attr('id').charAt(0)),
+                    j = parseInt(clone.attr('id').charAt(2)),
+                    i_this = parseInt($(this).attr('id').charAt(0)),
+                    j_this = parseInt($(this).attr('id').charAt(2));
+                if ((i == i_this && (j == j_this - 1 || j == j_this + 1)) || (j == j_this && (i == i_this - 1 || i == i_this + 1))) {
+                    $(this).text(clone.text()).draggable('enable').droppable("disable").removeClass("transparent");
+                    $("#" + clone.attr('id')).text("0").draggable('disable').droppable("enable").addClass("transparent");
+                    //$(this).css("position","absolute");
+                    var left, top;
+                    if (j == j_this) {
+                        left = ui.position.left;
+                        if (i == i_this - 1) top = ui.position.top - 81;
+                        else top = ui.position.top + 81;
+                    } else {
+                        top = ui.position.top;
+                        if (j == j_this - 1) left = ui.position.left - 70;
+                        else left = ui.position.left + 70;
+                    }
+                    $(this).css("left", left + "px");
+                    $(this).css("top", top + "px");
+                    //console.log($(this).css("left"));
+                    $(this).animate({left: 0, top: 0}, 500);
+                    //$(this).animate({top: 0}, 500);
+                    /*while (left != 0) {
+                     if (left > 0) {
+                     left--;
+                     $(this).css("left", left + "px");
+                     } else {
+                     left++;
+                     $(this).css("left", left + "px");
+                     }
+                     }*/
+                    ifWin();
+                }
             }
-            //ui.revert(false);
         }
-    });
+    )
+    ;
     for (i = 0; i < 4; ++i) {
         for (j = 0; j < 4; ++j) {
             if (arr[i][j] == "0") {
