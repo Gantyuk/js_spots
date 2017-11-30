@@ -49,7 +49,7 @@ div .col-xs-3 {
 .container {
     padding-left: 3%;
     padding-right: 3%;
-    text-align: center;
+    width: auto!important;
 }
 .row{
     text-align: center;
